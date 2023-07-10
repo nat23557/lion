@@ -1,0 +1,64 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+  <style>
+    /* Form styles */
+    .form-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px;
+      border-radius: 5px;
+      background-color: #333;
+      color: #fff;
+      border-radius: 30px;
+    }
+
+    .form-container h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .form-container label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    .form-container input[type="text"],
+    .form-container textarea,
+    .form-container select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: none;
+      border-radius: 4px;
+      background-color: #555;
+      color: #fff;
+    }
+
+    .form-container input[type="submit"] {
+      background-color: #4caf50;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .form-container input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+  </style>
+
+  <div class="form-container">
+    <h1>Create a New Listing</h1>
+
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <div>
+        <input type="submit" value="Create Listing">
+      </div>
+    </form>
+  </div>
+{% endblock %}

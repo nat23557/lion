@@ -1,0 +1,37 @@
+/* Specific styles for the navigation menu */
+ul.nav {
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+}
+
+ul.nav li.nav-item {
+    margin-left: 10px;
+}
+
+ul.nav li.nav-item a.nav-link {
+    color: aquamarine;
+    text-decoration: none;
+    padding: 5px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+ul.nav li.nav-item a.nav-link:hover {
+    background-color: aquamarine;
+    color: rgb(70, 41, 41);
+}
+
+ul.nav li.nav-item a.active {
+    background-color: aquamarine;
+    color: rgb(70, 41, 41);
+}
+
+h1 {
+    color: aquamarine;
+}
+
+/* Dark mode background color */
+body {
+    background-color: rgb(70, 41, 41);
+}

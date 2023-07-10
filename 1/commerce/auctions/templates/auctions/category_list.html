@@ -1,0 +1,14 @@
+
+{% block body %}
+  <h1>List of Categories</h1>
+
+  {% if categories %}
+    <ul>
+      {% for category in categories %}
+        <li><a href="{% url 'category_listings' category=category %}">{{ category }}</a></li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No categories found.</p>
+  {% endif %}
+{% endblock %}

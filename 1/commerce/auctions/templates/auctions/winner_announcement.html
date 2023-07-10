@@ -1,0 +1,9 @@
+{% extends 'auctions/layout.html' %}
+
+{% block title %}Winner Announcement{% endblock %}
+
+{% block body %}
+    <h1>Winner Announcement</h1>
+    <p>The winner of the {listing.title} is: {{ listing.winner.username }}</p>
+    <a href="{% url 'index' %}" class="button">Back to Homepage</a>
+{% endblock %}

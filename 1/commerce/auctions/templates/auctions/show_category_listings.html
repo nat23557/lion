@@ -1,0 +1,17 @@
+{% extends 'auctions/layout.html' %}
+
+{% block body %}
+  <h1>Listings for Category: {{ category }}</h1>
+
+  {% if listings %}
+    <ul>
+      {% for listing in listings %}
+        <li><a href="{% url 'show_listing' listing_id=listing.id %}">{{ listing.title }}</a></li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No listings found for this category.</p>
+    <a style="font-size: 25px; font-family: sans-serif; position: absolute; left: 0; top: 300px;" class="nav-link" href="{% url 'index' %}">Return to Home</a>
+
+  {% endif %}
+{% endblock %}

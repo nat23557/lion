@@ -1,0 +1,22 @@
+<h1>Bidding Details for Listing: {{ listing.title }}</h1>
+
+{% if bids %}
+  <table>
+    <thead>
+      <tr>
+        <th>Bidder</th>
+        <th>Bid Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for bid in bids %}
+        <tr>
+          <td>{{ bid.bidder.username }}</td>
+          <td>${{ bid.bid_amount }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% else %}
+  <p>No bids yet.</p>
+{% endif %}

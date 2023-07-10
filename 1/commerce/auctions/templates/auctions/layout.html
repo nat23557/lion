@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{% block title %}Auctions{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="{% static 'auctions/styles.css' %}" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        /* Specific styles for the navigation menu */
+        ul.nav {
+            list-style: none;
+            display: flex;
+            justify-content: flex-end;
+            background-color: aquamarine; /* Bright background color */
+        }
+
+        ul.nav li.nav-item {
+            margin-left: 10px;
+        }
+
+        ul.nav li.nav-item a.nav-link {
+            color: rgb(70, 41, 41);
+            text-decoration: none;
+            padding: 5px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        ul.nav li.nav-item a.nav-link:hover {
+            background-color: rgb(70, 41, 41);
+            color: aquamarine;
+        }
+
+        ul.nav li.nav-item a.active {
+            background-color: rgb(70, 41, 41);
+            color: aquamarine;
+        }
+
+        /* Dark mode background color */
+        body {
+            background-color: rgb(70, 41, 41);
+        }
+
+        /* Align links to the top right end */
+        ul.nav {
+            justify-content: flex-end;
+        }
+
+        ul.nav li.nav-item {
+            display: inline-block;
+        }
+
+        h1 {
+            color: aquamarine;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center; color: white;">Auctions</h1>
+        <div style="color: white;">
+        {% if user.is_authenticated %}
+            Signed in as <strong>{{ user.username }}</strong>.
+        {% else %}
+            Not signed in.
+        {% endif %}
+        </div>
+
+    
+    <ul class="nav">
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'index' %}">Active Listings</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'listing' %}">Create Listings</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'show_categories' %}">Categories</a>
+        </li>
+        {% if user.is_authenticated %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'watchlist' %}">Watchlist</a>
+            </li>
+        {% else %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'login' %}">Log In</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'register' %}">Register</a>
+            </li>
+        {% endif %}
+    </ul>
+    
+    <hr>
+    {% block body %}
+    {% endblock %}
+</body>
+</html>
